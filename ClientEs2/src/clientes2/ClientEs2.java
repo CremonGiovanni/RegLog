@@ -1,21 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package clientes2;
 
-/**
- *
- * @author cremon.giovanni
- */
+import java.io.*;
+import java.net.*;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ClientEs2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            Scanner tastiera = new Scanner(System.in);
+            Socket clientSocket = new Socket("192.168.56.1", 5000);
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            boolean fine = false;
+            String lettura, messaggio;
+
+            do {
+                System.out.println("voui registrare un nuovo utente o loggare"
+                        + "\n[reg/log]");
+                lettura = tastiera.next();
+                if (lettura.equals("reg")) {
+                    System.out.println("inserire nome");
+                    messaggio = tastiera.next();
+                    out.println(messaggio);
+                    System.out.println("inserire password");
+                    messaggio = tastiera.next();
+                    out.println(messaggio);
+                }
+            } while (!fine);
+
+        } catch (IOException ex) {
+            Logger.getLogger(ClientEs2.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
 }
