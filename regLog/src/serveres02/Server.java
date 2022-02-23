@@ -37,13 +37,18 @@ public class Server {
 //fine scrittura
 
 //lettura file
+
             File cred = new File("credenziali.txt");
-             Scanner myReader = new Scanner(cred);
-             while (myReader.hasNextLine()) {
-        String data = myReader.nextLine();
-        System.out.println(data);
-        myReader.close();
-      }
+            Scanner myReader = new Scanner(cred);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                out.println(data);
+                myReader.close();
+                in.close();
+                out.close();
+                clientSocket.close();
+                serverSocket.close();
+            }
 //fine lettura            
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);

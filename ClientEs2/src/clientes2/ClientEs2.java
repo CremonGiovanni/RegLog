@@ -28,9 +28,13 @@ public class ClientEs2 {
                     System.out.println("inserire password");
                     messaggio = tastiera.next();
                     out.println(messaggio);
+                    
                 }
+              fine=true;
             } while (!fine);
-
+            in.close();
+            out.close();
+            clientSocket.close();
         } catch (IOException ex) {
             Logger.getLogger(ClientEs2.class.getName()).log(Level.SEVERE, null, ex);
         }
