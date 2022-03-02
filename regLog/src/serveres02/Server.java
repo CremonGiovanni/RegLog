@@ -25,31 +25,30 @@ public class Server {
 
             String nome = in.readLine();
 
-            myWriter.write(nome);
-
-            myWriter.close();
+            myWriter.write("nome \n" + nome);
 
             String password = in.readLine();
 
-            myWriter.write(password);
+            myWriter.write("\npassword \n" + password);
 
-            myWriter.write(nome);
+            myWriter.close();
 //fine scrittura
 
 //lettura file
-
-            File cred = new File("credenziali.txt");
-            Scanner myReader = new Scanner(cred);
+            
+            Scanner myReader = new Scanner( (Readable) myWriter);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 out.println(data);
-                myReader.close();
-                in.close();
-                out.close();
-                clientSocket.close();
-                serverSocket.close();
+
             }
-//fine lettura            
+            myReader.close();
+//fine lettura  
+            in.close();
+            out.close();
+            clientSocket.close();
+            serverSocket.close();
+
         } catch (IOException ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }

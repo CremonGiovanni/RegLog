@@ -32,6 +32,7 @@ public class ClientEs2 {
                 }
               fine=true;
             } while (!fine);
+            in.readLine();
             in.close();
             out.close();
             clientSocket.close();
